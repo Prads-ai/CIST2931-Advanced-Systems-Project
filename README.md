@@ -4,7 +4,7 @@ Project Description:
 
 In this project you will create a Web Application that may be used by Patients who are looking to make an appointment to see a Chiropractor.  Patients will be able to search available time/dates and make an appointment.
 
-A Customer/Patient Should be able to:
+A ###Customer/Patient Should be able to:
 I.	Create a patient account to be used to make appointments
 II.	Make changes to their account information at any time
 III.	Login, search available appointments, based time/day and or doctor.

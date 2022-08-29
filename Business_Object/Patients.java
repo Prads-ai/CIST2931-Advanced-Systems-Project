@@ -1,7 +1,7 @@
 /********************************************************************************
  * CIST2931 Advanced Systems Project 
  * Business Objects
- * Author: Lyons Kevin, Pradsley D'Haiti
+ * Author: Lyons Kevin, Pradsley D'Haiti, Morhun Daria, Jarmal Richardson, Wilcox Devares
  * Date: 8/27/2022
  *********************************************************************************/
 package Business_Object;

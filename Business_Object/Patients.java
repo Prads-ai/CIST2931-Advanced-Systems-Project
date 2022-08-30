@@ -125,7 +125,39 @@ public class Patient {
         }
         
     }//end selectDB()
+ 	// ++++++++++ DB Behaviors +++++++++++++
+    /************************************************************************
+    * updateDB() update the patient data and information from the Database 
+    *************************************************************************/
+    public void updateDB(){
+        try{
+            //Loading the driver
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+            Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
+            System.out.println("Database connected and ready to be updated");
+            Statement stmt = con.createStatement();
+            String sql = "UPDATE  Patients  SET firstname = '"+ getFirstName() +"',"
+                    + "lastName = '"+ getLastName() +"',"
+                    + "address = '"+ getAddress() +"',"
+                    + "city = '"+ getCity() +"',"
+                    + "state = '"+ getState() +"',"
+                    + "zip = '"+ getZip() +"',"
+                    + "email = '"+ getEmail() +"',"
+                    + "ins_co = '"+ getInsco() +"'"
+                    + " WHERE  Patient_id ='"+ getPatientId() +"'" ;
+            int n = stmt.executeUpdate(sql);
+            // Checking if the code has been executed
+            if(n == 1){
+                System.out.println("Success !!! ");
+            }
+            else{
+                System.out.println("Failed !!!");
+            }
+        }catch(Exception ex){
             
+         ex.printStackTrace();
+        }
+     }//end of updateDB     
     
     public static void main(String arg[]){
         

@@ -1,7 +1,7 @@
 <%-- 
     Document   : DisplayPatientInfo
-    Created on : Apr 15, 2022, 3:09:26 PM
-    Author     : pach3
+    Created on : September 1, 2022    
+    Author     : Pradsley D'Haiti
 --%>
 <%@page import="Business_Object.Patient"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -15,13 +15,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="firstpage.css">
   <style>
-      body{
+body{
   font-family: 'Raleway', sans-serif;
 }
 .container img{
     width: 15%;
 }
-.container-fluid,.container{
+.container-fluid{
     box-shadow: 0 2px 5px rgba(3, 3, 0, 0.4);
     background:  #ededed;
     text-transform: uppercase;
@@ -33,8 +33,8 @@
 /*---------------------- Hero Section ------------------------------------- */
 #hero .cover{
   width: 100%;
-  height: 75vh;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),url('https://html.modernwebtemplates.com/activelife/images/slide01.jpg');
+  height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://html.modernwebtemplates.com/activelife/images/slide01.jpg');
   background-size: cover;
   background-position:cover;
   display: flex;
@@ -42,13 +42,12 @@
   align-items: center;
   text-align: center;
   color: white;
+  padding-top: 8rem;
 }
-
 .cover .btn-danger{
   position: relative;
   top: 1rem;
 }
-
 #icon-login{
   position: relative;
   top:3px;
@@ -56,6 +55,26 @@
 .cover h1{
   z-index: 17;
 }
+/*---------------------- Choose Us Section------------------------------------- */
+.pain{
+  width: 100%;
+  padding-right:3rem;
+}
+/*---------------------- Services Section------------------------------------- */
+#Services .container{
+ background-color: #edf2f3;
+
+
+}
+.container .row{
+  font-size: 0.9rem;
+}
+.col-lg-4 {
+  background-color: white;
+  width: 25%;
+  margin-left: 5px;
+}
+
 @media (min-width: 992px){
   .navbar-expand-lg .navbar-collapse {
     display: flex!important;
@@ -116,6 +135,67 @@
                 <p>Chiropractic is a non-invasive, hands-on health care discipline that focuses on the neuro-musculoskeletal system. 
                     Chiropractors practice a manual approach. </p>
                 <button class="btn btn-danger">Book an appointment</button>
+            </div>
+        </div>
+    </section>
+    <!--Choose us section-->
+    <section id="Choose-Us" class="mt-3">
+        <div class="wrapper p-5 ">
+            <div class="d-flex text-white" style="background:#3bb1db;">
+                <div class="col-6">
+                    <img class="pain" src="https://img.freepik.com/free-photo/close-up-man-rubbing-his-painful-back-isolated-white-background_1150-2934.jpg?w=1060&t=st=1662141147~exp=1662141747~hmac=1ae47bd1b930cd4c193c62c24caa75739b7e4b7aafa8c78de322bbae51e9ac49" alt="">
+                </div>
+                <div class="col-lg-6 mt-5 pe-5">
+                    <h1 class="pb-5">Why Choose Us</h1>
+                    <p class="pb-2">We are proud to offer a wide range of comprehensive services to meet the needs of adults, seniors, and pediatric patients.</p>
+                    <p class="pb-5">Brisket cow leberkas pastrami shoulder. Tri-tip jowl jerky meatball bresaola sirloin. Venison leberkas landjaeger picanha fatback cow rump chicken. Tri-tip pork chop pork beef tail. Cow meatloaf shankle pork loin beef ribs jowl bresaola. Short ribs rump turducken sirloin ham hock pork belly kevin. Porchetta pork picanha, ham hock spare. ribs kevin pastrami 
+                        tongue leberkas jowl tenderloin andouille meatloaf ball tip alcatra. </p>
+                    <button class="btn btn-danger rounded px-5" style="position: relative; bottom: 1rem;">Read More</button>
+                </div>
+            </div>
+        </div>          
+        </div>
+    </section>
+     <!--Services Section-->
+    <section id="Services">
+        <div class="container">
+            <div class="p-5">
+                <div >
+                    <h1 class="text-center">Chiropractic Services</h1>
+                    <p class="text-center mb-5">Tongue porchetta chuck sirloin leberkas ribeye tail hamburger brisket drumstick landjaegers </p>    
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 shadow mb-3 pt-3 ">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/spinal.png" style="background-color: red ;" alt="">
+                        <h2 class="fs-4 pb-5">Spinal Manipulation </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow mb-3 pt-3">
+                        <img class="rounded float-start me-1 " src="https://html.modernwebtemplates.com/activelife/images/services-icons/manual.png" style="background-color: red ;">
+                        <h2 class="fs-5 pb-5 ">Medical Acupuncture</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow mb-3 pt-3 ">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/electrotherapy.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Electrotherapy</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-1" src="https://html.modernwebtemplates.com/activelife/images/services-icons/therapeutic.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Therapeutic Exercise </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/manual.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Manual Lymphatic </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/joint.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Joint Mobilization</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

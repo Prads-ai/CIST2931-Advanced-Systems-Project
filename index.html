@@ -1,85 +1,213 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>CSS Template</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="./style.css" rel="stylesheet">
-<style>
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="style.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/jpg" href="img/topPage_logo.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;400&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="firstpage.css">
+  <style>
+body{
+  font-family: 'Raleway', sans-serif;
+}
+.container img{
+    width: 15%;
+}
+.container-fluid{
+    box-shadow: 0 2px 5px rgba(3, 3, 0, 0.4);
+    background:  #ededed;
+    text-transform: uppercase;
+}
+.navbar-nav .nav-item .nav-link{
+  font-size: 1.2rem;
+  margin-left: 3rem;
+}
+/*---------------------- Hero Section ------------------------------------- */
+#hero .cover{
+  width: 100%;
+  height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://html.modernwebtemplates.com/activelife/images/slide01.jpg');
+  background-size: cover;
+  background-position:cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding-top: 8rem;
+}
+.cover .btn-danger{
+  position: relative;
+  top: 1rem;
+}
+#icon-login{
+  position: relative;
+  top:3px;
+}
+.cover h1{
+  z-index: 17;
+}
+/*---------------------- Choose Us Section------------------------------------- */
+.pain{
+  width: 100%;
+  padding-right:3rem;
+}
+/*---------------------- Services Section------------------------------------- */
+#Services .container{
+ background-color: #edf2f3;
+
+
+}
+.container .row{
+  font-size: 0.9rem;
+}
+.col-lg-4 {
+  background-color: white;
+  width: 25%;
+  margin-left: 5px;
+}
+
+@media (min-width: 992px){
+  .navbar-expand-lg .navbar-collapse {
+    display: flex!important;
+    flex-basis: auto;
+    padding-right: 6.0rem;
+    padding-left: 3.5rem;
+  }
+}
+
+  </style>
+    <title>Chiropractor Website</title>
 </head>
 <body>
-
-
-<!-- Fill in href links with desired pages -->
-
-
- <ul>
-  <li><a href="">Home</a></li>
-  <li><a href="">Dentist</a></li>
-   <li><a href=""t>About</a></li>
-    <li><a href="">Services</a></li>
-    <li><a href="">Pricing</a></li>
-    <li><a href="">Contact</a></li>
-    
-  <li style="float:right"><a href="">Make an appointment</a></li>
-</ul>
-
-
-
-
-<header>
-  <h2>Tooth Care</h2>
-</header>
-
-<section>
-  <nav>
-    <h2> Make an appointment</h2>
-    
-    <form action="/action_page.php">
-  <label for="fname">Whole name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  
-  <label for="fname">Phone number:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
- 
-  <label for="fname">Appointment time:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
- 
-  
-  
-  
-    
-<label for="fname">Email address:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>   
-    
-    
-   <label for="fname">Appointment date:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br> 
-    
-    <label for="lname">Select a doctor:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    
-   <input type="submit" value="Submit">
-</form> 
-      
-    
-  </nav>
-  
-  <article>
-    <h1>We offer best dental servies.</h1>
-    
-    
-    <!-- type anything you want here -->
-    
-    <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
-  </article>
-</section>
-
-<footer>
-  <p>Footer</p>
-</footer>
-
+    <header>
+        <div class="container-fluid ">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg bg-light navbar-light">
+                    <a href="#" class="navbar-brand d-none d-lg-block">
+                    </a>
+                    <button class="navbar-toggler"  type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                      
+                    <div class="collapse navbar-collapse justify-content-around" id="nav-menu">
+                        <ul class="navbar-nav ">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link">Pricing</a>
+                            </li>
+                            <!--Login pages-->
+                            <li class="nav-item dropdown ">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <iconify-icon icon="carbon:user-avatar-filled-alt" id="icon-login"></iconify-icon>  Login
+                                </a>
+                                <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="patient_login.jsp"><iconify-icon icon="healthicons:inpatient"></iconify-icon>  Patient</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="chiropractor-login.jsp"><iconify-icon icon="healthicons:doctor-male"></iconify-icon>  Chiropractor</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="#"><iconify-icon icon="eos-icons:admin-outlined"></iconify-icon>  Admin</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>    
+            </div>
+        </div>
+    </header>
+    <section id="hero">
+        <div class="cover mt-1">
+            <div>
+                <h1>Welcome to Our Chiropractic Centre</h1>
+                <p>Chiropractic is a non-invasive, hands-on health care discipline that focuses on the neuro-musculoskeletal system. 
+                    Chiropractors practice a manual approach. </p>
+                <button class="btn btn-danger">Book an appointment</button>
+            </div>
+        </div>
+    </section>
+    <!--Choose us section-->
+    <section id="Choose-Us" class="mt-3">
+        <div class="wrapper p-5 ">
+            <div class="d-flex text-white" style="background:#3bb1db;">
+                <div class="col-6">
+                    <img class="pain" src="https://img.freepik.com/free-photo/close-up-man-rubbing-his-painful-back-isolated-white-background_1150-2934.jpg?w=1060&t=st=1662141147~exp=1662141747~hmac=1ae47bd1b930cd4c193c62c24caa75739b7e4b7aafa8c78de322bbae51e9ac49" alt="">
+                </div>
+                <div class="col-lg-6 mt-5 pe-5">
+                    <h1 class="pb-5">Why Choose Us</h1>
+                    <p class="pb-2">We are proud to offer a wide range of comprehensive services to meet the needs of adults, seniors, and pediatric patients.</p>
+                    <p class="pb-5">Brisket cow leberkas pastrami shoulder. Tri-tip jowl jerky meatball bresaola sirloin. Venison leberkas landjaeger picanha fatback cow rump chicken. Tri-tip pork chop pork beef tail. Cow meatloaf shankle pork loin beef ribs jowl bresaola. Short ribs rump turducken sirloin ham hock pork belly kevin. Porchetta pork picanha, ham hock spare. ribs kevin pastrami 
+                        tongue leberkas jowl tenderloin andouille meatloaf ball tip alcatra. </p>
+                    <button class="btn btn-danger rounded px-5" style="position: relative; bottom: 1rem;">Read More</button>
+                </div>
+            </div>
+        </div>          
+        </div>
+    </section>
+     <!--Services Section-->
+    <section id="Services">
+        <div class="container">
+            <div class="p-5">
+                <div >
+                    <h1 class="text-center">Chiropractic Services</h1>
+                    <p class="text-center mb-5">Tongue porchetta chuck sirloin leberkas ribeye tail hamburger brisket drumstick landjaegers </p>    
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 shadow mb-3 pt-3 ">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/spinal.png" style="background-color: red ;" alt="">
+                        <h2 class="fs-4 pb-5">Spinal Manipulation </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow mb-3 pt-3">
+                        <img class="rounded float-start me-1 " src="https://html.modernwebtemplates.com/activelife/images/services-icons/manual.png" style="background-color: red ;">
+                        <h2 class="fs-5 pb-5 ">Medical Acupuncture</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow mb-3 pt-3 ">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/electrotherapy.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Electrotherapy</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-1" src="https://html.modernwebtemplates.com/activelife/images/services-icons/therapeutic.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Therapeutic Exercise </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/manual.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Manual Lymphatic </h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                    <div class="col-lg-4 shadow pt-4 pt-3">
+                        <img class="rounded float-start me-2" src="https://html.modernwebtemplates.com/activelife/images/services-icons/joint.png" style="background-color: red ;">
+                        <h2 class="fs-4 pb-5">Joint Mobilization</h2>
+                        <p class="px-2">Ball tip boudin chicken, cetta bresaola doner prosciutto meatloaf leberkas cow.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+     <!-- Bootstrap Javascript-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+  integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+  integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+  crossorigin="anonymous"></script>
+<!-- End of Bootstrap Javascript-->
+<!--Icony cdn Script-->
+<script src="https://code.iconify.design/iconify-icon/1.0.0-beta.3/iconify-icon.min.js"></script>
 </body>
 </html>

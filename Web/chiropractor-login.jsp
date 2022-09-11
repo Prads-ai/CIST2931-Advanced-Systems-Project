@@ -38,7 +38,7 @@
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="form2Example17" class="form-control form-control-lg" placeholder="Chiropractor id" name="patientId" required />
+                    <input type="text" id="form2Example17" class="form-control form-control-lg" placeholder="Chiropractor id" name="chiroprac_id" required />
                   </div>
 
                   <div class="form-outline mb-4">

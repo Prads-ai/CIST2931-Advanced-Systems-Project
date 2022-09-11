@@ -13,6 +13,7 @@ class Chiropractor {
 		private String email;
                 private String office_num;
                 private String admin_id;
+                private String password;
 //=============================Overloading Constructors
 //Empty Constructor                
     public Chiropractor() {
@@ -23,16 +24,17 @@ class Chiropractor {
 		email="";
                 office_num="";
                 admin_id="";
+                password = "";
     }
 // Constructor with arguments
-    public Chiropractor(String i, String fn, String ln, String ed, String ap, String ad) {
+    public Chiropractor(String i, String fn, String ln, String ed, String ap, String ad, String pass) {
 		chiroprac_id=i;
 		firstName=fn;
 		lastName=ln;
 		email=ed;
                 office_num=ap;
                 admin_id= ad;
-           
+                password = pass;
     }            
  /*********************************************************************
  *
@@ -54,14 +56,18 @@ class Chiropractor {
                 ResultSet rs = stmt.executeQuery(sql);
                 rs.next();
                                 
-                setfirstName(rs.getString(1));
-                setlastName(rs.getString(2));
+                setfirstName(rs.getString(2));
+                setlastName(rs.getString(3));
                 setemail(rs.getString(4));
-                setoffice_num(rs.getString(3));
-                setadmin_id(rs.getString(6));
+                setoffice_num(rs.getString(5));
+                setadmin_id(rs.getString(6)); 
+                setPassword(rs.getString(7));
+                con1.close();
             }catch(Exception se) {
 		System.out.println(se);
             	}
+            System.out.println("--------------------------------------------------------");
+            
 	} //end selectDB()
 
         public String getchiroprac_id() { return chiroprac_id; }
@@ -84,20 +90,31 @@ class Chiropractor {
         public String getadmin_id() { return admin_id; }
         public void setadmin_id(String ad) { admin_id=ad; }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+        
+        
+
 	public void display() {
         	System.out.println("ID             =   "+ chiroprac_id);                
 		System.out.println("First Name     =   "+ firstName);
 		System.out.println("Last Name      =   "+ lastName);	
 		System.out.println("Email            =   "+ email);
                 System.out.println("Office           =   "+ office_num);
-                System.out.println("Admin id = " + admin_id);		
+                System.out.println("Admin id = " + admin_id);
+                System.out.println("Password = " + password);
         }	
 	
         public static void main(String args[]) {
 		
-         Chiropractor chiro1 = new Chiropractor();
-         chiro1.selectDB("C500");
-         chiro1.display();
+        // Chiropractor chiro1 = new Chiropractor();
+         //chiro1.selectDB("C500");
+         //chiro1.display();
                         
         }
 }

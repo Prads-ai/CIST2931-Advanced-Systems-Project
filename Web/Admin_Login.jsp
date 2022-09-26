@@ -1,7 +1,7 @@
 <%-- 
-    Document   : chiropractor-login
+    Document   : Admin- Login
     Created on : Aug 31, 2022, 11:24:21 AM
-    Author     : pach3
+    Author     : Pradsley, Kevin
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -15,14 +15,14 @@
     </head>
     <body>
         
-       <section class="vh-100" style="background-color: #0f0809;">
+       <section class="vh-100" style="background-color: #ff6529;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col col-xl-10">
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="https://img.freepik.com/free-vector/flat-doctor-making-back-massage-patient_88138-840.jpg?w=1060&t=st=1661322549~exp=1661323149~hmac=9111c92aa30e94dbd24adeb79c006300f8245ffca54a85164cb2efde3e759a1b"
+              <img src="https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?w=740&t=st=1662827604~exp=1662828204~hmac=a6a71f1f637ae7561d8e705dce234b071b2174bdb69279c23c7c115e693cd640s"
                 alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
@@ -31,14 +31,13 @@
                   <form action="LoginChiropractorServlet" method="POST">
 
                   <div class="d-flex align-items-center mb-3 pb-1">
-                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                    <span class="h1 fw-bold mb-0">Chiropractor Portal </span>
+                    <i class="fas fa-cubes fa-2x me-3" style="color: #ff62z9;"></i> 
                   </div>
 
                   <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account</h5>
 
                   <div class="form-outline mb-4">
-                    <input type="text" id="form2Example17" class="form-control form-control-lg" placeholder="Chiropractor id" name="chiroprac_id"" required />
+                    <input type="text" id="form2Example17" class="form-control form-control-lg" placeholder="Admin_id" name="admin_id" required />
                   </div>
 
                   <div class="form-outline mb-4">

@@ -1,7 +1,7 @@
 <%-- 
     Document   : patient_login
-    Created on : September 1, 2022    
-    Author     : Pradsley D'Haiti
+    Created on : Aug 31, 2022, 10:56:58 AM
+    Author     : pach3
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -56,7 +56,7 @@
                     <div class="pt-1 mb-4">
                       <button class="btn btn-dark btn-lg btn-block" type="submit"
                         style="margin-right: 10px;">Login</button>
-                      <button class="btn btn-light btn-lg btn-block" type="reset">Reset</button>
+                       <button class="btn btn-light btn-lg btn-block" type="reset"> <a  class="text-muted"href="Patient_Register.jsp" style="text-decoration: none;">Create an account</a></button>
                     </div>
 
                     <a class="small text-muted" href="#!">Forgot password?</a>

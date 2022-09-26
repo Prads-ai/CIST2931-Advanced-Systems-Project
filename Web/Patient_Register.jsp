@@ -1,7 +1,6 @@
 <%-- 
     Document   : DisplayPatientInfo
-    Created on : Apr 15, 2022, 3:09:26 PM
-    Author     : pach3
+    Created on :  9/10/2022, 3:09:26 PM
 --%>
 <%@page import="Business_Object.Patient"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -86,35 +85,44 @@ button:focus {
     <div class="row d-flex justify-content-center">
         <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
           
-            <h3>UPDATE YOUR INFORMATIONS</h3>
+            <h3>Create an Account</h3>
             <jsp:useBean id="currentPatient" scope="session" class="Business_Object.Patient"/>
             <div class="card">
                 <h5 class="text-center mb-4"></h5>
-                <form class="form-card" action ="" method="POST" >
+                <form class="form-card" action ="CreateAccountPatientServlet" method="POST" >
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Patient ID<span class="text-danger"> *</span></label> 
-                            <input readonly type="text" id="ans" name="id" data-toggle="tooltip" title="Cannot change the ID" value="<jsp:getProperty name="currentPatient" property="lastName"/>" </div>
+                            <input type="text" id="ans" name="patient_id" data-toggle="tooltip" title="Cannot change the ID" placeholder="Patient_id" ></div>
                             <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> 
-                            <input  type="text" id="fname" name="fname" value="<jsp:getProperty name="currentPatient" property="firstName"/>" </div>
+                            <input  type="text" id="fname" name="fname" placeholder="Firstname "</div>
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> 
-                            <input type="text" id="lname" name="lname" value="<jsp:getProperty name="currentPatient" property="address"/>" </div>
+                            <input type="text" id="lname" name="lname"  placeholder="Lastname "</div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> 
-                            <input type="text" id="email" name="email" value="<jsp:getProperty name="currentPatient" property="city"/>" </div>
+                            <input type="text" id="email" name="email" placeholder="Email"</div>
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label>
-                            <input  type="text" id="mob" name="address"  value="<jsp:getProperty name="currentPatient" property="state"/>" > </div>
+                            <input  type="text" id="mob" name="address"  placeholder="Address"> </div>
                     </div>
+                     <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">City<span class="text-danger"> *</span></label> 
+                            <input type="text" id="email" name="city" placeholder="City"</div>
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">State<span class="text-danger"> *</span></label>
+                            <input  type="text" id="mob" name="state"  placeholder="State"> </div>
+                    </div>
+                     <div class="row justify-content-between text-left">
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Zip Code<span class="text-danger"> *</span></label>
+                            <input  type="text" id="mob" name="zip"  placeholder="Zip Code"> </div>
+                    </div>
+                    
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Insurance Company<span class="text-danger"> *</span></label>
-                            <input  type="text" id="job" name="insurance"  value="<jsp:getProperty name="currentPatient" property="zip"/>"> </div>
+                            <input  type="text" id="job" name="insurance"  placeholder="Insurance"> </div>
                                 <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label>
-                                    <input  type="text" id="job" name="pass"  value="<jsp:getProperty name="currentPatient" property="email"/>"> </div>
+                                    <input  type="password" id="job" name="pass" placeholder="Password"> </div>
                     </div>
                     <div class="row justify-content-around">
-                        <div class="form-group col-sm-4"> <a href="patient_dashboard"><button class="btn-block btn-lg btn-danger" >Cancel</button> </a></div>
-                        <div class="form-group col-sm-4"> <button type="submit" class="btn-block btn-primary"  name="submit">Save changes</button> </div>
+                        <div class="form-group col-sm-4"> <button type="submit" class="btn-block btn-primary"  name="submit">Register</button> </div>
                     </div>
                     </div>
                     

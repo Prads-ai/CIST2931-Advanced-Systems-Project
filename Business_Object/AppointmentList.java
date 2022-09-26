@@ -109,7 +109,7 @@ public static void main(String[] args){
         appt.selectDB("P201");
         appL.getAppointments(appt.getPatId());
         
-        appt.setChiropractorId("Prads");
+        appt.setChiropractorId("P201");
         appt.setOfficeNum(1);
         appt.setApptDateTime("9/12/2025");
         

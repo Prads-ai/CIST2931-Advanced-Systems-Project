@@ -1,5 +1,8 @@
-package Business_Object;
+package Business_Object.Servlets;
 
+import Business_Object.Appointments;
+import Business_Object.Chiropractor;
+import Business_Object.Patient;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
@@ -26,8 +29,12 @@ public class LoginPatientServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             //Creating a session for the user
             HttpSession sess = request.getSession();
+            HttpSession chiroSession = request.getSession();
+            HttpSession appointmentSession = request.getSession();
+            HttpSession procedureSession = request.getSession();
 
            //Storing user information
           String patient_id = request.getParameter("patientId");
@@ -36,12 +43,24 @@ public class LoginPatientServlet extends HttpServlet {
           // Create a new patient object
           Patient currentPatient = new Patient();
           currentPatient.selectDB(patient_id);
+          String patientDB = currentPatient.getPatientId(); // Patient id in the database
+          String patientPassDB = currentPatient.getPassword();
           
-          // Comparing user credentials 
-          if(patient_id.equals(currentPatient.getPatientId()) && password.equals(currentPatient.getPassword())){
-              
-              sess.setAttribute("currentPatient",currentPatient);
-              
+         // Checking to see if there is a match
+         boolean credentialsValid = patientDB.equals(patient_id) && patientPassDB.equals(password);
+        
+         // Getting all the object needed for this patient
+         Appointments appt = new Appointments();
+         Chiropractor chiro = new Chiropractor();
+         
+        // Comparing user credentials 
+          
+          
+          if(credentialsValid){            
+              sess.setAttribute("currentPatient",currentPatient); // Create a session for this user
+              sess.setAttribute("appt", appt);
+              sess.setAttribute("chiro", chiro);
+   
               RequestDispatcher dispatcher = request.getRequestDispatcher("patient_dashboard.jsp");
               dispatcher.forward(request, response);
           }else{

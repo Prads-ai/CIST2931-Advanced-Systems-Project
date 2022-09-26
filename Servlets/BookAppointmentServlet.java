@@ -1,7 +1,14 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Business_Object.Servlets;
 
-import Business_Object.Chiropractor;
+import Business_Object.Appointments;
+import Business_Object.Patient;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,13 +17,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import sun.rmi.server.Dispatcher;
 
 /**
  *
  * @author pach3
  */
-@WebServlet(name = "LoginChiropractorServlet", urlPatterns = {"/LoginChiropractorServlet"})
-public class LoginChiropractorServlet extends HttpServlet {
+@WebServlet(name = "BookAppointmentServlet", urlPatterns = {"/BookAppointmentServlet"})
+public class BookAppointmentServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,27 +40,26 @@ public class LoginChiropractorServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           HttpSession sess = request.getSession();
-           //Storing user information
-          String chiroprac_id = request.getParameter("chiroprac_id");
-          String password = request.getParameter("password");
-          out.print(chiroprac_id);
-          out.print(password);
-          
-          Chiropractor cc = new Chiropractor();
-          cc.selectDB(chiroprac_id);
-          out.print(cc.getPassword());
-          boolean isValid = cc.getchiroprac_id().equals(chiroprac_id) && cc.getPassword().equals(password);
-          // Comparing user credentials 
-          if(isValid){
-              System.out.println("Valid credentials");
-              sess.setAttribute("cc",cc);
-              RequestDispatcher dispatcher = request.getRequestDispatcher("chiropractor_dashboard.jsp");
-              dispatcher.forward(request, response);
-          }else{
-              RequestDispatcher dispatcher = request.getRequestDispatcher("404.html");
-              dispatcher.forward(request, response);
-          }
+            HttpSession pSession = request.getSession();
+            HttpSession aSession = request.getSession();
+            
+            String date, chiro, procedure;
+            date = request.getParameter("date");
+            chiro = request.getParameter("chiropract_id");
+            procedure = request.getParameter("proc_code");
+            int office_num =Integer.parseInt(request.getParameter("office_num"));
+            
+            Patient currentPatient = (Patient)pSession.getAttribute("currentPatient");
+            Appointments appt = (Appointments)aSession.getAttribute("appt");
+            String patientID = currentPatient.getPatientId();
+            appt.insertDB(date, patientID, chiro, procedure, office_num);
+            System.out.println(appt);
+            RequestDispatcher dispatcher =  request.getRequestDispatcher("patient_dashboard.jsp");
+                                                                          
+            dispatcher.forward(request, response);
+            
+            
+ //out.print("PatientID: "+patientID +" Date: " + date +" Chiro : " +  chiro + " Procedure:  "+ procedure + " Office:  " +office_num );
         }
     }
 

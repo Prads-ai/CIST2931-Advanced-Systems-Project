@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Appointments {
 
@@ -11,7 +13,7 @@ public class Appointments {
     private String patient_id;
     private String chiroprac_id;
     private String proc_code;
-    private String office_num;
+    private int office_num;
     //============================== Overloading constructor ================================
     //Empty constructor
     public Appointments() {
@@ -19,16 +21,18 @@ public class Appointments {
         patient_id = "";
         chiroprac_id = "";
         proc_code = "";
-        office_num = "";        
+        office_num = 0;  
     }
+    
     // Constructor for all Appointment fields
-    public Appointments(String apptDateTime, String patId, String chiropractorId, String procCode, String office) {
+    public Appointments(String apptDateTime, String patId, String chiropractorId, String procCode, int office) {
         this.apptDateTime = apptDateTime;
         this.patient_id = patId;
         this.chiroprac_id = chiropractorId;
         this.proc_code = procCode;
         this.office_num = office;
     }
+
     //============================================= Setters =========================================
     public void setApptDateTime(String apptDateTime ){
         this.apptDateTime = apptDateTime;
@@ -42,6 +46,7 @@ public class Appointments {
     public void setProcCode(String procCode){
         this.proc_code = procCode;
     }
+    public void setOfficeNum(int office){this.office_num = office;}
     //============================ Getters ============================================
     public String getApptDateTime(){
         return apptDateTime;
@@ -55,8 +60,8 @@ public class Appointments {
     public String getProcCode(){
         return proc_code;
     }
-    public String getOfficeNum(){return office_num;}
-    public void setOfficeNum(String officeNum){this.office_num = officeNum;}
+    public int getOfficeNum(){return office_num;}
+ 
     // Behaviors
     public void selectDB(String pId){
          this.patient_id = pId;
@@ -66,38 +71,46 @@ public class Appointments {
             Statement stmt = con.createStatement();
             //Execute statement
             String sql;
-            sql = "Select * from Appointments WHERE patient_id = '"+ getPatId() +"'";
+            sql = "SELECT * FROM Appointments WHERE patient_id = '"+ getPatId() +"'";
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
             //Process Data
             rs.next();
-                setApptDateTime(rs.getString(4));
-                setPatId(rs.getString(1));
-                setChiropractorId(rs.getString(2));
-                setProcCode(rs.getString(3));
-                setOfficeNum(rs.getString(5));
+                setApptDateTime(rs.getString(1));
+                setPatId(rs.getString(2));
+                setChiropractorId(rs.getString(3));
+                setProcCode(rs.getString(4));
+                setOfficeNum(rs.getInt(5));
+
+                rs.close();
+                con.close();
+                stmt.close();
         }
         catch(Exception e){
             System.out.println(e);
         }
+        System.out.println("--------------------------------------------------------");
+
     }//end selectDB()
     /************************************************************************
     * insertDB() adds an appointment to the Database for the Patient ID 
     *************************************************************************/
-    public void insertDB(String apptDT, String pid, String cid, String pcd){
+    public void insertDB(String apptDT, String pid, String cid, String pcd, int office){
         this.apptDateTime=apptDT;
         this.patient_id=pid;
         this.chiroprac_id=cid;
         this.proc_code =pcd;
+        this.office_num = office;
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
             
             Statement stmt = con.createStatement();
-            String sql = "Insert into Appointments(apptDateTime,patient_id,dentId,procCode) values('"+getApptDateTime()+"',"+
+            String sql = "Insert into Appointments(apptDateTime,patient_id,chiroprac_id,proc_code,office_num) values('"+getApptDateTime()+"',"+
                                                       "'"+getPatId()+"',"+ 
                                                       "'"+getChiropractorId()+"',"+ 
-                                                      "'"+getProcCode()+"')"; 
+                                                      "'"+getProcCode()+"',"+""
+                                                        + "'"+getOfficeNum()+"')"; 
             System.out.println(sql);
             int n1 = stmt.executeUpdate(sql);
             if (n1==1)
@@ -119,11 +132,17 @@ public class Appointments {
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
             
             Statement stmt = con.createStatement();
+            
            
-            String sql = "UPDATE Appointments SET apptDateTime = '"+getApptDateTime()+ "',"+ 
-                                            " dentId ='"+getChiropractorId()+"',"+
-                                            " procCode ='"+getProcCode()+"'"+
-                                            " where patId='"+getPatId()+"'";    
+           
+            String sql = "UPDATE Appointments SET apptDateTime = '"+ getApptDateTime() + "',"+
+                                          //  "patient_id ='"+ getPatId() +"',"+
+                                            "chiroprac_id ='"+ getChiropractorId() +"',"+
+                                            "proc_code ='"+ getProcCode() +"',"+
+                                            "office_num ='"+ getOfficeNum() +"'"+
+                                            "WHERE patient_id='"+getPatId()+"'"; 
+            
+            
             
             System.out.println(sql);
             int n = stmt.executeUpdate(sql);
@@ -167,27 +186,39 @@ public class Appointments {
         System.out.println("Procedure Code: "+ getProcCode());
         System.out.println("Office Number: " + getOfficeNum());
     }
-  
+    
+    public String toString(){
+        return "  Appointment Date and Time: " + this.apptDateTime + "\n" +
+                  "Patient id: " + this.patient_id + "\n" +
+                  "Chiropractor id: " + this.chiroprac_id + "\n" +
+                  "Procedure code: " + this.proc_code + "\n" +
+                  "Office Number: " + this.office_num + "\n" ;
+                }          
     public static void main(String args[]) { //testing
          
-        Appointments appt2 = new Appointments();
-        appt2.selectDB("P202");
-        appt2.display();
+        Appointments appt = new Appointments();
+        //appt.insertDB("9/15/2022", "P201", "C500","PR305",4);
+        //appt.display();
+       
+       
+      
         
+       
+
+       
         //Appointments appt = new Appointments();
        //appt.insertDB("July 3 2019 6PM", "A609", "D390", "P321");
        //Procedure pro = new Procedure();
        //pro.selectDB(appt.getProcCode());
        //appt.display();
        //pro.display();
-      // appt.selectDB("A900");
-       //appt.setApptDateTime("May 1, 2018, 9PM");
-       //appt.setPatId("A900");
-       //appt.setDentistId("D201");
-       //appt.setProcCode("P321");
-       //appt.updateDB();
-       //appt.display();
-      
+        appt.selectDB("P201");
+        appt.setChiropractorId("C510");
+        appt.setProcCode("PR303");
+        appt.setOfficeNum(1);
+        appt.updateDB();
+        appt.display();
+        
        
          
         

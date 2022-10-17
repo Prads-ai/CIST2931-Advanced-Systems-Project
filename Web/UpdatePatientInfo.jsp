@@ -88,29 +88,44 @@ button:focus {
           
             <h3>UPDATE YOUR INFORMATIONS</h3>
             <jsp:useBean id="currentPatient" scope="session" class="Business_Object.Patient"/>
+            <jsp:setProperty property="*" name="currentPatient"/>
             <div class="card">
                 <h5 class="text-center mb-4"></h5>
-                <form class="form-card" action ="" method="POST" >
+                <form class="form-card" action ="UpdatePatientInfoServlet" method="POST" >
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">Patient ID<span class="text-danger"> *</span></label> 
-                            <input readonly type="text" id="ans" name="id" data-toggle="tooltip" title="Cannot change the ID" value="<jsp:getProperty name="currentPatient" property="lastName"/>" </div>
+                        <div class="form-group col-12 flex-column d-flex "> <label class=" d-none form-control-label px-3">Patient ID<span class="text-danger"> *</span></label> 
+                            <input  class="d-none" readonly type="text" id="ans" name="id" data-toggle="tooltip" title="Cannot change the ID" value="<jsp:getProperty name="currentPatient" property="firstName"/>" </div>
                             <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">First name<span class="text-danger"> *</span></label> 
                             <input  type="text" id="fname" name="fname" value="<jsp:getProperty name="currentPatient" property="firstName"/>" </div>
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Last name<span class="text-danger"> *</span></label> 
-                            <input type="text" id="lname" name="lname" value="<jsp:getProperty name="currentPatient" property="address"/>" </div>
+                            <input type="text" id="lname" name="lname" value="<jsp:getProperty name="currentPatient" property="lastName"/>" </div>
                     </div>
                     <div class="row justify-content-between text-left">
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Email<span class="text-danger"> *</span></label> 
-                            <input type="text" id="email" name="email" value="<jsp:getProperty name="currentPatient" property="city"/>" </div>
+                            <input type="text" id="email" name="email" value="<jsp:getProperty name="currentPatient" property="email"/>" </div>
                         <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Address<span class="text-danger"> *</span></label>
-                            <input  type="text" id="mob" name="address"  value="<jsp:getProperty name="currentPatient" property="state"/>" > </div>
+                            <input  type="text" id="address" name="address"  value="<jsp:getProperty name="currentPatient" property="address"/>" > </div>
                     </div>
+                    
+                     <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">City<span class="text-danger"> *</span></label>
+                            <input  type="text" id="city" name="city"  value="<jsp:getProperty name="currentPatient" property="city"/>" > </div>
+                    </div>
+                    
+                      <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">State<span class="text-danger"> *</span></label>
+                            <input  type="text" id="state" name="state"  value="<jsp:getProperty name="currentPatient" property="state"/>" > </div>
+                    </div>
+                    
+                      
+                      <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Zip<span class="text-danger"> *</span></label>
+                            <input  type="text" id="zip" name="zip"  value="<jsp:getProperty name="currentPatient" property="zip"/>" > </div>
+                    </div>
+                    
                     <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Insurance Company<span class="text-danger"> *</span></label>
-                            <input  type="text" id="job" name="insurance"  value="<jsp:getProperty name="currentPatient" property="zip"/>"> </div>
+                        <div class="form-group col-sm-12 flex-column d-flex"> <label class=" d-none form-control-label px-3">Insurance Company<span class="text-danger"> *</span></label>
+                            <input class="d-none" type="text" id="job" name="insurance"  value="<jsp:getProperty name="currentPatient" property="firstName"/>"> </div>
                                 <div class="form-group col-sm-12 flex-column d-flex"> <label class="form-control-label px-3">Password<span class="text-danger"> *</span></label>
-                                    <input  type="text" id="job" name="pass"  value="<jsp:getProperty name="currentPatient" property="email"/>"> </div>
+                                    <input  type="text" id="pass" name="pass"  value="<jsp:getProperty name="currentPatient" property="password"/>"> </div>
                     </div>
                     <div class="row justify-content-around">
                         <div class="form-group col-sm-4"> <a href="patient_dashboard"><button class="btn-block btn-lg btn-danger" >Cancel</button> </a></div>

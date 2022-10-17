@@ -13,21 +13,21 @@ import java.util.List;
  *****************************************************************************************************/
 public class AppointmentList {
     //================== Properties =========================
-    private ArrayList<Appointments> appointment;
+    public ArrayList<Appointments> appointment;
     Patient p = new Patient();
     String p_id = p.getPatAppt().getPatId();
-    
+    int count;
     //================ Constructors=======================
     public AppointmentList(){
        appointment = new ArrayList<Appointments>();
-
+       count++;
     }
     //================= Behaviors ===========================
     //Getters and Setters
     public void setAppointment(int index,Appointments appt){
        appointment.set(index, appt);
     }
-    
+     
     // Display method
     public void display(){
         for(int i = 0 ; i < appointment.size(); i++){
@@ -64,12 +64,13 @@ public class AppointmentList {
                 while(rs.next()){
                     
                     String date_time = rs.getString(1);
+                    int theId = rs.getInt(6);
                     String Patient_id = rs.getString(2);
                     String Chiroprac_id = rs.getString(3);
                     String proc_Code = rs.getString(4);
                     int office_num =rs.getInt(5);
 
-                    Appointments appt = new Appointments(date_time,Patient_id,Chiroprac_id,proc_Code,office_num);
+                    Appointments appt = new Appointments(date_time,Patient_id,Chiroprac_id,proc_Code,office_num,theId);
                     appointment.add(appt);
                 }
         }catch(Exception ex){
@@ -81,6 +82,22 @@ public class AppointmentList {
         
          return appointment;
     }
+   
+      public Appointments SearchAppointment(String date){
+         
+          Appointments appt = new Appointments();
+          for(int i = 0 ; i < appointment.size(); i++){
+              if(appointment.get(i).getApptDateTime().equalsIgnoreCase(date)){
+                appt.setApptDateTime( appointment.get(i).getApptDateTime());
+                appt.setChiropractorId(appointment.get(i).getChiropractorId());
+                appt.setId(appointment.get(i).getId());
+                appt.setPatId(appointment.get(i).getPatId());
+                appt.setOfficeNum(appointment.get(i).getOfficeNum());
+                appt.setProcCode(appointment.get(i).getProcCode());
+              }
+          }
+          return appt;
+    }   
     
        
     
@@ -105,19 +122,33 @@ public static void main(String[] args){
            
         AppointmentList appL = new AppointmentList();
         Appointments appt = new Appointments();
-       
+        
         appt.selectDB("P201");
         appL.getAppointments(appt.getPatId());
-        
-        appt.setChiropractorId("P201");
-        appt.setOfficeNum(1);
-        appt.setApptDateTime("9/12/2025");
-        
-        appt.updateDB();
-        appL.setAppointment(0, appt);
         appL.display();
-       
-       
+        
+        System.out.println("This is the result page");
+        Appointments result = appL.SearchAppointment("2022-15-14");
+        
+        if(result.getApptDateTime().equalsIgnoreCase("")){
+            result.setApptDateTime("No Data");
+            result.setChiropractorId("No Data");
+            System.out.println(result);
+        }
+       // System.out.println( "This is the result " + result.getApptDateTime());
+        
+        
+       // appt.setApptDateTime("9/12/2022");
+       // appt.setChiropractorId("C510");
+       // appt.setProcCode("PR303");
+       // appt.setOfficeNum(5);
+       // appt.updateDB(4);
+        
+       // appL.setAppointment(1, appt);
+    
+        //appt.display();
+        
+      
      
     }
 }

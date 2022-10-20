@@ -157,7 +157,6 @@ public class Patient {
             con.close();
             System.out.println("=========================================================");
         }
- 
         catch(Exception e){
             System.out.println(e);
         } 
@@ -239,10 +238,8 @@ public class Patient {
             }
             else{
                 System.out.println("Failed !!!");
-            }
-            
+            }           
         }catch(Exception ex){
-            
          ex.printStackTrace();
         }
         

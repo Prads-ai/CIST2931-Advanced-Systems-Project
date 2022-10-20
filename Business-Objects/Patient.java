@@ -10,12 +10,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
 /*********************************************************************
  * The Patient Class is used to hold a patient's data or information
  *********************************************************************/
 public class Patient {
-
 // ==================== Properties =========================
     private String patientId;
     private String firstName;
@@ -28,8 +26,7 @@ public class Patient {
     private String insCo;
     private String password;
     private Appointments p_appointment;
-    private Chiropractor chiro;
-    
+    private Chiropractor chiro;  
     //============================ Overloading Constructors ==================================================
     //Constructor with no arguments
     public Patient(){
@@ -46,7 +43,7 @@ public class Patient {
         p_appointment = new Appointments();
         chiro = new Chiropractor();
     }
-    //Constructor with arguments
+    //================ Constructor with arguments ============================
     public Patient(String p,String f, String l, String a, String c , String s, String z , String e , String ins, String pass){
         this.patientId = p;
         this.firstName = f;
@@ -99,7 +96,6 @@ public class Patient {
     
     public void setChiro(Chiropractor chi){this.chiro = chi;}
     public Chiropractor getChiropractor(){return chiro;}
-    
 //======================== display() ============================================
  /*****************************************************************************************************************************
  * The display method return the values of all the patient class fields except for the appointment  and the chiropractor object 
@@ -126,8 +122,7 @@ public class Patient {
         p.selectDB(patientId);
         patientName = p.getFirstName();
         return patientName;
-    }
-        
+    }    
     // ====================== selectDB() =========================
     // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
@@ -166,8 +161,7 @@ public class Patient {
         catch(Exception e){
             System.out.println(e);
         } 
-    }//end selectDB()
-        
+    }//end selectDB()   
     // ====================== insert() =========================
     // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
@@ -214,7 +208,6 @@ public class Patient {
                  ex.printStackTrace();;
         }
     }
-    
     // ====================== update() =========================
     // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
@@ -254,7 +247,6 @@ public class Patient {
         }
         
      }//end of updateDB
-    
     public static void main(String arg[]){
     //============ Testing ==========================   
      Patient p3 = new Patient();

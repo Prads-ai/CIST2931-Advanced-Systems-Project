@@ -1,3 +1,9 @@
+/********************************************************************************
+ * CIST2931 Advanced Systems Project 
+ * Appointments Business Object
+ * Author: Pradsley D'Haiti, Lyons Kevin
+ * Date: 10/20/2022
+ *********************************************************************************/
 package Business_Object;
 
 import java.sql.Connection;
@@ -6,7 +12,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
+/******************************************************************
+ * The Appointment Class is used to hold a patient's appointment
+ ******************************************************************/
 public class Appointments {
 
     private String apptDateTime;
@@ -18,6 +26,7 @@ public class Appointments {
     //============================== Overloading constructor ================================
     //Empty constructor
     public Appointments() {
+        
         apptDateTime = "";
         patient_id = "";
         chiroprac_id = "";
@@ -25,8 +34,7 @@ public class Appointments {
         office_num = 0;  
         id = 0;
     }
- 
-       // Constructor for all Appointment fields
+    // Constructor for all Appointment fields
     public Appointments(String apptDateTime, String patId, String chiropractorId, String procCode, int office, int id) {
         this.apptDateTime = apptDateTime;
         this.patient_id = patId;
@@ -34,8 +42,7 @@ public class Appointments {
         this.proc_code = procCode;
         this.office_num = office;
         this.id = id;
-    }
-    
+    } 
     // Constructor for all Appointment fields
     public Appointments(String apptDateTime, String patId, String chiropractorId, String procCode, int office) {
         this.apptDateTime = apptDateTime;
@@ -45,7 +52,6 @@ public class Appointments {
         this.office_num = office;
         this.id = id;
     }
-
     //============================================= Setters =========================================
     public void setApptDateTime(String apptDateTime ){
         this.apptDateTime = apptDateTime;
@@ -77,10 +83,13 @@ public class Appointments {
     public int getOfficeNum(){return office_num;}
     
     public int getId(){return id;}
- 
-    // Behaviors
+    // ====================== selectDB() =========================
+    // ++++++++++ DB Behaviors +++++++++++++
+    /************************************************************************
+    * selectDB() gets an appointment from the Database using the Patient ID 
+    *************************************************************************/
     public void selectDB(String pId){
-         this.patient_id = pId;
+        this.patient_id = pId;
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
@@ -109,6 +118,7 @@ public class Appointments {
         System.out.println("--------------------------------------------------------");
 
     }//end selectDB()
+    //====================== insertDB()=========================================
     /************************************************************************
     * insertDB() adds an appointment to the Database for the Patient ID 
     *************************************************************************/
@@ -121,7 +131,6 @@ public class Appointments {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
-            
             Statement stmt = con.createStatement();
             String sql = "Insert into Appointments(apptDateTime,patient_id,chiroprac_id,proc_code,office_num) values('"+getApptDateTime()+"',"+
                                                       "'"+getPatId()+"',"+ 
@@ -140,6 +149,7 @@ public class Appointments {
             System.out.println(e1);
         }
     }//end insertDB()
+    //========================== update()====================================
     /************************************************************************
     * updateDB() updates an appointment in the Database for the Patient ID 
     *************************************************************************/
@@ -149,20 +159,13 @@ public class Appointments {
         try{
             Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             Connection con = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
-            
-            Statement stmt = con.createStatement();
-            
-           
-           
+            Statement stmt = con.createStatement();         
             String sql = "UPDATE Appointments SET apptDateTime = '"+ getApptDateTime() + "',"+
                                             "patient_id ='"+ getPatId() +"',"+
                                             "chiroprac_id ='"+ getChiropractorId() +"',"+
                                             "proc_code ='"+ getProcCode() +"',"+
                                             "office_num ='"+ getOfficeNum() +"'"+
                                             "WHERE patient_id='"+getPatId()+"' AND id = '"+ id +"' "; 
-            
-            
-            
             System.out.println(sql);
             int n = stmt.executeUpdate(sql);
             if (n==1)
@@ -175,6 +178,7 @@ public class Appointments {
             System.out.println(e1);
         }
     }//end updateDB()
+    //============================ delete() ====================================
     /************************************************************************
     * deleteDB() deletes an appointment from the Database for the Patient ID 
     *************************************************************************/
@@ -197,7 +201,10 @@ public class Appointments {
             System.out.println(e1);
         }
     }//end deleteDB()
-    
+    //======================== display() and toString() ============================================
+ /*****************************************************************************************************************************
+ * The display and toString method return the values of all the patient class fields.
+ ******************************************************************************************************************************/  
     public void display(){
         System.out.println("Appointment Date and Time : " + getApptDateTime());
         System.out.println("Patient id: " + getPatId());
@@ -205,8 +212,7 @@ public class Appointments {
         System.out.println("Procedure Code: "+ getProcCode());
         System.out.println("Office Number: " + getOfficeNum());
         System.out.println("Id : " + getId());
-    }
-    
+    }  
     public String toString(){
         return "  Appointment Date and Time: " + this.apptDateTime + "\n" +
                   "Patient id: " + this.patient_id + "\n" +
@@ -216,23 +222,9 @@ public class Appointments {
                   "Id : " + this.id;
                 }          
     public static void main(String args[]) { //testing
-         
+     //==================== Testing =======================    
         Appointments appt = new Appointments();
-        //appt.insertDB("9/15/2022", "P201", "C500","PR305",4);
-        //appt.display();
-       
-       
-      
-        
-       
 
-       
-        //Appointments appt = new Appointments();
-       //appt.insertDB("July 3 2019 6PM", "A609", "D390", "P321");
-       //Procedure pro = new Procedure();
-       //pro.selectDB(appt.getProcCode());
-       //appt.display();
-       //pro.display();
         appt.selectDB("P201");
         appt.setApptDateTime("09/28/2022");
         appt.setChiropractorId("C510");
@@ -240,11 +232,6 @@ public class Appointments {
         appt.setOfficeNum(1);
         appt.updateDB(4);
         appt.display();
-      
-       
-         
-        
-         
-    }//end main
-   
+    
+    }//end main 
 }

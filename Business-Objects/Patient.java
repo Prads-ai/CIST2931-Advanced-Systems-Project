@@ -1,8 +1,8 @@
 /********************************************************************************
  * CIST2931 Advanced Systems Project 
- * Business Objects
- * Author: Lyons Kevin, Pradsley D'Haiti
- * Date: 8/27/2022
+ * Patient Business Object
+ * Author: Pradsley D'Haiti, Lyons Kevin
+ * Date: 10/20/2022
  *********************************************************************************/
 package Business_Object;
 
@@ -11,6 +11,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+/*********************************************************************
+ * The Patient Class is used to hold a patient's data or information
+ *********************************************************************/
 public class Patient {
 
 // ==================== Properties =========================
@@ -96,8 +99,11 @@ public class Patient {
     
     public void setChiro(Chiropractor chi){this.chiro = chi;}
     public Chiropractor getChiropractor(){return chiro;}
-    // ====================== Connection with DataBase =========================
-       
+    
+//======================== display() ============================================
+ /*****************************************************************************************************************************
+ * The display method return the values of all the patient class fields except for the appointment  and the chiropractor object 
+ ******************************************************************************************************************************/  
     public void display() {
         System.out.println("ID             =   "+ patientId);
         System.out.println("FirstName     =   "+ firstName);
@@ -110,7 +116,19 @@ public class Patient {
         System.out.println("Password       =   " + password);
         System.out.println("Ins_Co         =   "+ insCo);
     }
-    
+ //=========================== findPatientName()================================
+ /*****************************************************************************************************************************
+ * The findPatientName method returns the name of the selected patient from the database. 
+ ******************************************************************************************************************************/     
+    public String findPatientName(){
+        String patientName ;
+        Patient p = new Patient();
+        p.selectDB(patientId);
+        patientName = p.getFirstName();
+        return patientName;
+    }
+        
+    // ====================== selectDB() =========================
     // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
     * selectDB() gets the patient data and information from the Database 
@@ -149,12 +167,12 @@ public class Patient {
             System.out.println(e);
         } 
     }//end selectDB()
-
-     // ++++++++++ DB Behaviors +++++++++++++
+        
+    // ====================== insert() =========================
+    // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
-    * insert() add patient data and information into the Database 
-    *************************************************************************/
-     
+    * insertDB() add patient data and information into the Database 
+    *************************************************************************/ 
     public void insertDB(String p,String f, String l, String a, String c , String s, String z , String e , String ins, String pass){
         // Updating all field in the Patient object.
         this.patientId = p;
@@ -196,11 +214,12 @@ public class Patient {
                  ex.printStackTrace();;
         }
     }
+    
+    // ====================== update() =========================
     // ++++++++++ DB Behaviors +++++++++++++
     /************************************************************************
     * updateDB() update the patient data and information from the Database 
-    *************************************************************************/
-     
+    *************************************************************************/  
     public void updateDB(){
         try{
             //Loading the driver
@@ -237,14 +256,12 @@ public class Patient {
      }//end of updateDB
     
     public static void main(String arg[]){
-    
-      
-     // Patient p2 = new Patient();
-     // p2.insertDB("P202", "Leonardo", "Rodriguez", "300 PerterBurg Ridge Dr", "Wonderland", "WA", "30549", "tr@aol.com", "Sigkma", "123");
-     // p2.display();
-     
+    //============ Testing ==========================   
      Patient p3 = new Patient();
      p3.selectDB("P201");
      p3.display();
+     
+     String name =  p3.findPatientName();
+     System.out.println(name);
     }
 }// end of class

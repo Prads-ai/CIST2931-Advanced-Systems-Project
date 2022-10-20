@@ -1,6 +1,6 @@
 /********************************************************************************
  * CIST2931 Advanced Systems Project 
- * Patient Business Object
+ * AppointmentList Business Object
  * Author: Pradsley D'Haiti, Lyons Kevin
  * Date: 10/20/2022
  *********************************************************************************/

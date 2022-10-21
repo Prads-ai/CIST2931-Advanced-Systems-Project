@@ -1,3 +1,9 @@
+/********************************************************************************
+ * CIST2931 Advanced Systems Project 
+ * Appointments Business Object
+ * Author: Wilcox, Devares, Pradsley D'Haiti
+ * Date: 10/20/2022
+ *********************************************************************************/
 package Business_Object;
 
 import java.sql.Connection;
@@ -46,8 +52,8 @@ public class Procedure {
         System.out.println("\t\tProcedure Cost = "+getCost()); 
     }
     
-    public String returnDisplay() {
-        return "~Procedure~\n\nName:\t" + getProcName() + "\nDescription:\t" + getProcDesc() + "\nPrice:\t$" + getCost();
+    public String toString() {
+        return "~Procedure~\nName: " + getProcName() + "\nDescription: " + getProcDesc() + "\nPrice: $" + getCost();
     }
     
     // ++++++++++ DB Behaviors +++++++++++++

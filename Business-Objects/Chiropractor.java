@@ -88,12 +88,10 @@ public class Chiropractor {
                 setoffice_num(rs.getString(5));
                 setadmin_id(rs.getString(6)); 
                 setPassword(rs.getString(7));
-
             }catch(Exception se) {
 		System.out.println(se);
             	}
             System.out.println("--------------------------------------------------------");
-            
 	} //end selectDB()
 // //================== selectChiropractorFromScheduleTable() ===========================================      
  /*********************************************************************
@@ -107,7 +105,6 @@ public class Chiropractor {
         Connection con1 = null;
         Statement stmt = null;
         ResultSet rs = null;
-        
         try{
                 Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
             	con1 = DriverManager.getConnection("jdbc:ucanaccess://C://Users//pach3//Downloads//ChiropractorOfficeMDB.accdb/");
@@ -130,14 +127,12 @@ public class Chiropractor {
         catch(Exception ex){
             ex.printStackTrace();
         }
-    
     }
 // ======================= UpdateDB ==============================================
     // ++++++++++ DB Behaviors +++++++++++++
     /***************************************************************************
     * UpdateDB() update the chiropractor data and information from the Database
     ****************************************************************************/    
-    
     public void UpdateDB(){
         try{
                 //Load DB Driver

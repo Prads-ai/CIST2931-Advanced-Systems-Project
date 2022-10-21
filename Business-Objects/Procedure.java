@@ -1,6 +1,6 @@
 /********************************************************************************
  * CIST2931 Advanced Systems Project 
- * Appointments Business Object
+ * Procedure Business Object
  * Author: Wilcox, Devares, Pradsley D'Haiti
  * Date: 10/20/2022
  *********************************************************************************/

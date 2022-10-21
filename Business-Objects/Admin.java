@@ -33,7 +33,7 @@ public class Admin {
         password = "";
         chiro = new Chiropractor();
     }
-
+    // Constructor with parameters
     public Admin( String fn, String ln, String em, String num, String adm, String pass) {
         this.firstName = fn;
         this.lastName = ln;
@@ -43,69 +43,59 @@ public class Admin {
         this.password = pass;
         this.chiro = new Chiropractor();
     }
-
     //Getters and Setters
     public void setAdminfname(String fn) {
         firstName = fn;
     }
-
     public String getAdminfname() {
         return firstName;
     }
-
     public void setChirolname(String ln) {
         lastName = ln;
     }
-
     public String getAdminlname() {
         return lastName;
     }
-
     public void setAdminemail(String em) {
         email = em;
     }
-
     public String getAdminemail() {
         return email;
     }
-
     public void setAdminNum(String off) {
         phoneNum = off;
     }
-
     public String getAdminNum() {
         return phoneNum;
     }
-    
     public void setAdminid(String adm) {
         admin_id = adm;
     }
-   
-    
     public String getAdminid() {
         return admin_id;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
     public String getPassword() {
         return password;
     }
-    
-   
-
+//======================== display() ============================================
+ /*****************************************************************************************************************************
+ * The display method show all the values of all the Admin class fields 
+ ******************************************************************************************************************************/  
     public void display() {
         System.out.println("Your first name  is " + firstName);
         System.out.println("Your lastname is " + lastName);
         System.out.println("Your email is " + email);
         System.out.println("Your phone number is " + phoneNum);
         System.out.println("Your admin id is " + admin_id);
-        System.out.println("Your password is : " + password);
-        
+        System.out.println("Your password is : " + password);   
     }
-
+//================== selectDB() ===========================================    
+ /*********************************************************************
+ * The selectDB gets an Admin info from the ddatabase
+ *******************************************************************/  
     public void selectDB(String id) {
         admin_id = id;
         try {
@@ -124,7 +114,6 @@ public class Admin {
                     password = rs.getString(6);
                 }
             }
-
         } catch (ClassNotFoundException | SQLException ae) {
             System.out.println(ae);
         }
@@ -174,8 +163,6 @@ public class Admin {
             System.out.println("--------------------------------------------------------");
             
     } //end InsertDB()
-  
-
     /*****************************************************************
      * This method is to update the information to the dentist table.
      ***************************************************************/
@@ -200,7 +187,6 @@ public class Admin {
         } catch (ClassNotFoundException | SQLException ae) {
         }
     }
-
     public static void main(String[] args) {
         // Testing
         Admin a1 = new Admin();

@@ -1,7 +1,7 @@
 /********************************************************************************
  * CIST2931 Advanced Systems Project 
  * Procedure Business Object
- * Author: Wilcox, Devares, Pradsley D'Haiti
+ * Author: Wilcox, Devares
  * Date: 10/20/2022
  *********************************************************************************/
 package Business_Object;

@@ -1,5 +1,12 @@
+/********************************************************************************
+ * CIST2931 Advanced Systems Project 
+ * LoginChiropractorServlet
+ * Author: Daria Morhun
+ * Date: 10/20/2022
+ *********************************************************************************/
 package Business_Object.Servlets;
 
+import Business_Object.AppointmentList;
 import Business_Object.Appointments;
 import Business_Object.Chiropractor;
 import java.io.IOException;
@@ -11,11 +18,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-/**
- *
- * @author pach3
- */
+ //====================== LoginChiropractorServlet=========================================
+ /****************************************************************************************************************
+ *- LoginChiropractorServlet : 
+ * Get the values of all the fields of the chiropractor-login.jsp form
+ * Create and call the selectDB from the chiropractor class
+ * Get the chiropractor id and name from the selectDB method
+ * Validate the authenticity of the chiropractor
+ * Forward the current chiropractor to the chiropractor dashboard page or to an error page if there is a credential problem
+ *****************************************************************************************************************************/
 @WebServlet(name = "LoginChiropractorServlet", urlPatterns = {"/LoginChiropractorServlet"})
 public class LoginChiropractorServlet extends HttpServlet {
 
@@ -32,23 +43,34 @@ public class LoginChiropractorServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
+
            HttpSession sess = request.getSession();
+           HttpSession sessList = request.getSession();
            //Storing user information
           String chiroprac_id = request.getParameter("chiroprac_id");
           String password = request.getParameter("password");
-          out.print(chiroprac_id);
-          out.print(password);
           
           Chiropractor cc = new Chiropractor();
           Appointments appt = new Appointments();
+          AppointmentList appL = new AppointmentList();
+          
+          appL.getChiroAppointments(chiroprac_id);
+       
           cc.selectDB(chiroprac_id);
           out.print(cc.getPassword());
+         
           boolean isValid = cc.getchiroprac_id().equals(chiroprac_id) && cc.getPassword().equals(password);
-          // Comparing user credentials 
+         
           if(isValid){
+                 if(appL.appointment.size() == 0){
+                     
+                    sess.setAttribute("cc",cc);
+                    RequestDispatcher dispatcher = request.getRequestDispatcher("NoAppointmentDashboard.jsp");
+                    dispatcher.forward(request, response);                  
+                }
               System.out.println("Valid credentials");
               sess.setAttribute("cc",cc);
+              sessList.setAttribute("recentAppointment", appL);
               RequestDispatcher dispatcher = request.getRequestDispatcher("chiropractor_dashboard.jsp");
               dispatcher.forward(request, response);
           }else{
